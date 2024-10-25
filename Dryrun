@@ -16,7 +16,7 @@ pipeline {
 
         stage('Dryrun') { // ขั้นตอนในการรัน Robot Framework ด้วยโหมด dry run
             steps {
-                sh "robot --dryrun mytest.robot" // รัน Robot Framework ในโหมด dry run
+                sh "python3 -m robot --dryrun mytest.robot" // รัน Robot Framework ในโหมด dry run
             }
             
             post {
