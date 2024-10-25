@@ -21,7 +21,7 @@ pipeline {
                 )
 
                 // ส่งข้อความไปยัง Slack (สามารถเปิดใช้งานได้เมื่อจำเป็น)
-                // slackSend(channel: "#newjoin_test_noti_slack", message: "igollfs_noti_slack")
+                slackSend(channel: "#newjoin_test_noti_slack", message: "igollfs_noti_slack")
             }
         }
     }
