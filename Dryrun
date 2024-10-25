@@ -11,6 +11,12 @@ pipeline {
                     common.updateGithubStatus("pending")
                     echo "test"
                 }
+        stage{
+            steps{
+                sh "robot --dryrun" 
+                }
+            }
+        }
             }
             
             post {
