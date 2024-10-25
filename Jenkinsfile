@@ -15,11 +15,11 @@ pipeline{
                     otherFiles: '*-png,*-jpg',
                     onlyCritical: false
                 )
+                    slackSend(channel: "#newjoin_test_noti_slack", message: "igollfs_noti_slack")
+
                 // Script{
                 //     String failed = tm('${ROBOT_FAILED}')
                 //     String passed = tm('${ROBOT_FASSED}')
-                    slackSend(channel: "#newjoin_test_noti_slack", message: "igollfs_noti_slack")
-
                 // }
             }
         }
