@@ -12,6 +12,7 @@ pipeline {
                     echo "test"
                 }
             }
+            
             post {
                 always {
                     script {
