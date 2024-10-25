@@ -1,5 +1,5 @@
 def updateGithubStatus(state) {
-    withCredentials([usernamePassword(credentialsId: 'github_dryrun_training', usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
+    withCredentials([usernamePassword(credentialsId: 'igollfs_cicd_pipeline', usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
         sh """
             curl --location 'https://api.github.com/repos/${USER}/jenkins_training/statuses/${GIT_COMMIT}' \
             --header 'Content-Type: application/json' \
