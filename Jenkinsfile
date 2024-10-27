@@ -25,7 +25,7 @@ pipeline {
             script{
                 String failed = tm('${ROBOT_FAILED}')
                 String failed = tm('${ROBOT_PASSED}')
-                slackSend(channel: "#igollfs_test_noti_slack", message: "igollfs_noti_slack")
+                // slackSend(channel: "#igollfs_test_noti_slack", message: "igollfs_noti_slack")
                 slackSend(channel: "#igollfs_test_noti_slack", message: "igollfs_noti_slack\nPASSED " ${passed}\nFAILED:${failed}")
             }
             }
