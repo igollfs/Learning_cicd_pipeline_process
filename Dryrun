@@ -15,6 +15,10 @@ pipeline {
         stage('Dryrun') {
             steps {
                 sh "python3 -m robot --dryrun mytest.robot"
+
+            script{
+                slackSend(channel: "#igollfs_test_noti_slack", message: "dryrun_run_seccess")
+            }
             }
             
             post {
