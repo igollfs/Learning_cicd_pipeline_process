@@ -2,31 +2,28 @@ pipeline {
     agent any
 
     stages {
-        stage('send_pending') {
+        stage('send_status_pending') {
             steps {
                 script {
-                    // โหลดสคริปต์ common.groovy ที่มีฟังก์ชันที่ต้องการ
                     common = load "common.groovy"
-                    // อัปเดตสถานะ GitHub เป็น "pending" เพื่อบอกว่าการสร้างกำลังดำเนินอยู่
                     common.updateGithubStatus("pending")
-                    echo "test" // พิมพ์ข้อความ "test" ใน log
+                    echo "test"
                 }
             }
         }
 
-        stage('Dryrun') { // ขั้นตอนในการรัน Robot Framework ด้วยโหมด dry run
+        stage('Dryrun') {
             steps {
-                sh "python3 -m robot --dryrun mytest.robot" // รัน Robot Framework ในโหมด dry run
+                sh "python3 -m robot --dryrun mytest.robot"
             }
             
             post {
                 always { // ส่วนนี้จะทำงานเสมอเมื่อสิ้นสุดขั้นตอนนี้
                     script {
-                        // อัปเดตสถานะ GitHub ตามผลลัพธ์การสร้าง
-                        if ("${currentBuild.currentResult}" == 'SUCCESS') { // ถ้าการสร้างสำเร็จ
-                            common.updateGithubStatus("success") // อัปเดตสถานะเป็น "success"
-                        } else { // ถ้าการสร้างล้มเหลว
-                            common.updateGithubStatus("failure") // อัปเดตสถานะเป็น "failure"
+                        if ("${currentBuild.currentResult}" == 'SUCCESS') {
+                            common.updateGithubStatus("success")
+                        } else {
+                            common.updateGithubStatus("failure")
                         }
                     }
                 }
