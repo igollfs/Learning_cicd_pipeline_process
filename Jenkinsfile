@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage("Hello") {
+        stage("robot_script") {
             steps {
                 // รัน Robot Framework tests
                 sh "python3 -m robot mytest.robot"
